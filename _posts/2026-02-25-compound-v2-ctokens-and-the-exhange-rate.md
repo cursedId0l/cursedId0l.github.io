@@ -13,6 +13,8 @@ series_index: 2
 
 Compound lets users deposit tokens to earn yield. When you deposit, you receive a cToken in return that represents your position. For example, depositing USDC gives you cUSDC. You can think of a cToken as a receipt for your deposited tokens. Your deposited tokens are also referred to as the "underlying" token. Later you will exchange your cTokens for your underlying tokens when you want to redeem them. The exchange rate between cTokens and the underlying token is how yield is delivered. Over time, each cToken entitles you to more underlying than when you deposited. This is because the exchange rate between cTokens and underlying tokens changes. This article explains what the exchange rate is, how it's calculated, and why it grows.
 
+---
+
 ## Key Definitions
 
 Before we can look at the exchange rate formula, we need four Compound-specific terms. 
@@ -44,6 +46,7 @@ Before we can look at the exchange rate formula, we need four Compound-specific 
 
 So `cash + totalBorrows` is the total underlying assets of the market, and `totalReserves` is the portion of those assets marked for the protocol rather than suppliers. The numerator `cash + totalBorrows - totalReserves` therefore represents the underlying assets that  suppliers collectively own.
 
+---
 
 ## The Exchange Rate Formula
 
@@ -51,6 +54,8 @@ So `cash + totalBorrows` is the total underlying assets of the market, and `tota
 // 1 cToken = exchangeRate * 1 underlyingTokens
 exchangeRate = (cash + totalBorrows - totalReserves) / totalSupply
 ```
+
+---
 
 ## Using the Exchange Rate
 
@@ -65,6 +70,8 @@ To calculate how much underlying you receive when redeeming cTokens:
 ```
 underlyingReceived = cTokensBurned * exchangeRate
 ```
+
+---
 
 ## How Suppliers Earn Yield
 
